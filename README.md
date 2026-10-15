@@ -2,6 +2,10 @@
 
 # GalaxyXRDriver
 
+This fork of [AngelDark92/GalaxyXR-Driver](https://github.com/AngelDark92/GalaxyXR-Driver) adds manual per-eye render width and height and fixes VRLink's 4096-pixel recommendation clamp, which otherwise makes larger rectangular resolutions appear square in SteamVR.
+
+**[Download the Windows EXE + driver package](https://github.com/evertec82/GalaxyXR-Driver/releases/tag/manual-resolution-fix-1.9.0).** Extract the entire ZIP, close SteamVR, run `GalaxyXRDriverGUI/Galaxy XR Companion.exe`, and use **About → Install/Re-Install**. Set the dimensions under **Driver Settings → Headset**, then restart SteamVR. Use SteamVR **Custom 100%** to compare the base dimensions; Auto and per-game scaling still apply. The corrected package has been confirmed working on a Galaxy XR. This custom build retains the upstream application's version number, 1.9.0.
+
 A SteamVR driver for the Samsung Galaxy XR over Steam Link / vrlink. It makes the headset and its controllers show up in SteamVR as what they are, fixes controller tracking and throw velocity, and processes the streamed image (color, sharpening, anti-aliasing, distortion correction) right before it is encoded.
 
 It is a fork of [CustomHeadsetOpenVR by sboys3](https://github.com/sboys3/CustomHeadsetOpenVR) and ships as a separate vendor driver (`GalaxyXRNative`), so it can be installed next to the original and switched with one click.
@@ -12,7 +16,7 @@ It is a fork of [CustomHeadsetOpenVR by sboys3](https://github.com/sboys3/Custom
 
 **Headset**
 - Native Galaxy XR identity in SteamVR: model name, manufacturer, icons. No more generic vrlink HMD / Quest Pro.
-- Native render resolution: SteamVR renders at the panel's 3552×3840 per eye instead of the streamer's default.
+- Manual render resolution: choose the width and height per eye, defaulting to the panel's native 3552×3840.
 - Stream quality presets for the vrlink encoder.
 
 **Controllers**
@@ -52,7 +56,7 @@ Same as installing: extract the new zip, run the GUI, go to Setup and press Inst
 
 In Driver Settings and Image Settings:
 
-- Headset: Native Identity on, Native Render Resolution on (default), Stream Quality Preset High.
+- Headset: Native Identity on, Override Render Resolution on, with Render Width per Eye 3552 and Render Height per Eye 3840 (native defaults), Stream Quality Preset High.
 - Controllers: Official Controller Input Profile on. Leave Controller Fix Mode on Kalman CA.
 - Picture mode: keep **SDR 10-bit baseline** for unprocessed SDR output. To experiment with color, sharpening or lens correction while keeping the 10-bit request, enable **Image Enhancements** in App Settings and accept the image-quality warning. The combination may reduce image quality. Turn Image Enhancements off to return to neutral processing. Enabling the baseline resets picture adjustments and active lens corrections after confirmation.
 
@@ -68,6 +72,8 @@ Then restart SteamVR once.
 Open an issue [here](https://github.com/AngelDark92/GalaxyXR-Driver/issues) and attach `Steam\logs\vrserver.txt` if applicable. Please do not report problems with this fork on the original CustomHeadsetOpenVR repository.
 
 ## Manual configuration
+
+In Driver Settings → Headset, enable **Override Render Resolution** and set **Render Width per Eye** and **Render Height per Eye**. Defaults are 3552 × 3840. Restart SteamVR after changing them. The driver preserves the selected dimensions in VRLink's OpenVR display recommendation, including sizes above 4096 pixels per axis. These are the base dimensions at SteamVR 100%; Auto, global and per-game scaling still apply. Use Custom 100% to compare (SteamVR may round pixel sizes). Advanced VRLink resolution overrides retain priority on their respective axes. See [the square-resolution fix](Docs/ManualRenderResolution-2026-10-15.md) for details.
 
 Settings live in `%APPDATA%\GalaxyXR\CustomHeadset\settings.json` and are hot-reloaded by the driver. Distortion profiles go in a `Distortion` subfolder and are referenced by name.
 

@@ -28,7 +28,9 @@ function group(route: Route, containers: string[], sections: string[], advanced 
 }
 const headset = group('driver-settings', ['Headset'], ['headset']);
 headset('galaxyXr.nativeIdentity', 'Galaxy XR Native Identity', { advanced: true });
-headset('galaxyXr.nativeResolution', 'Native Render Resolution');
+headset('galaxyXr.nativeResolution', 'Override Render Resolution');
+headset('galaxyXr.renderWidth', 'Render Width per Eye');
+headset('galaxyXr.renderHeight', 'Render Height per Eye');
 headset('galaxyXr.vrlinkHeadsetProfile', 'vrlink Headset Profile', { advanced: true });
 headset('galaxyXr.sdr10Baseline', 'SDR 10-bit baseline');
 const controllers = group('driver-settings', ['Controllers'], ['controllers'], false, 'vendor');

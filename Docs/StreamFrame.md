@@ -56,7 +56,10 @@ Settings live in `%APPDATA%\GalaxyXR\CustomHeadset\settings.json`, separate from
 
 Galaxy XR page:
 
-- **Headset**: Native Identity on, Native Render Resolution on (default), Stream Quality Preset: High.
+- **Headset**: Native Identity on, Override Render Resolution on, with Render Width per Eye 3552 and Render Height per Eye 3840 (native defaults), Stream Quality Preset: High.
+
+Manual render resolution: in Driver Settings → Headset, enable **Override Render Resolution** and enter **Render Width per Eye** and **Render Height per Eye** (whole pixels, 1–16384). Reset either field to return it to its native default (3552 × 3840 per eye). Restart SteamVR after changing resolution. Turning the override off restores journal-owned resolution settings and retains your manual dimensions. The driver preserves these dimensions in VRLink's OpenVR display recommendation, bypassing its 4096-pixel-per-axis clamp. These are the base dimensions at SteamVR 100%; Auto, global and per-game scaling still apply. Use Custom 100% to compare (SteamVR may round pixel sizes). Stream encoding quality remains separate. Existing settings retain their enabled/disabled choice and use native dimensions until edited. Advanced VRLink resolution overrides retain priority on their respective axes.
+
 - **Controllers**: Official Controller Input Profile on. Controller Fix Mode: Kalman CA (default). Leave the offsets alone unless the controllers visibly sit wrong in your hand, the shipped values were measured against the official models.
 - **Image Processing**: Enable on.
 

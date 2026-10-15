@@ -387,6 +387,12 @@ export class GalaxySettingsBase {
     this.save();
   }
 
+  setRenderDimension(key: 'renderWidth' | 'renderHeight', value: number | undefined): void {
+    if (value === undefined || !Number.isInteger(value) || value < 1 || value > 16384) return;
+    this.galaxyXr[key] = value;
+    this.save();
+  }
+
   // Galaxy XR native identity (vendor builds only; page hides it otherwise)
   vendor = vendor;
   get galaxyXr(): GalaxyXrConfig {
@@ -396,6 +402,13 @@ export class GalaxySettingsBase {
       }
       if (this.rootSetting.galaxyXr.nativeResolution === undefined) {
         this.rootSetting.galaxyXr.nativeResolution = true;
+      }
+      // 2026-10-14: additive fields keep legacy ON/OFF choices unchanged.
+      for (const key of ['renderWidth', 'renderHeight'] as const) {
+        const value = this.rootSetting.galaxyXr[key];
+        if (typeof value !== 'number' || !Number.isInteger(value) || value < 1 || value > 16384) {
+          this.rootSetting.galaxyXr[key] = key === 'renderWidth' ? 3552 : 3840;
+        }
       }
       if (this.rootSetting.galaxyXr.streamQuality === undefined) {
         this.rootSetting.galaxyXr.streamQuality = 'balanced';
