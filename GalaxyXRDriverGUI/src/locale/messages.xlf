@@ -4048,6 +4048,27 @@ Value: closeButtonAction (gui-settings.json). Companion-only window preference; 
       <trans-unit id="bitrate-monitor-20261021-52" datatype="html">
         <source>Saved frame interval is invalid; inspection uses 5 seconds until a valid interval is applied.</source>
       </trans-unit>
+      <trans-unit id="manual-render-resolution-20261014-0" datatype="html">
+        <source>Override Render Resolution</source>
+      </trans-unit>
+      <trans-unit id="manual-render-resolution-20261014-1" datatype="html">
+        <source>Render Width per Eye</source>
+      </trans-unit>
+      <trans-unit id="manual-render-resolution-20261014-2" datatype="html">
+        <source>Render Height per Eye</source>
+      </trans-unit>
+      <trans-unit id="manual-render-resolution-20261014-3" datatype="html">
+        <source>Choose the render target size in pixels per eye at SteamVR 100% resolution. The native default is 3552 × 3840. Higher values increase GPU load. Requires a SteamVR restart. SteamVR Auto, global resolution and per-game scaling still apply; use Custom 100% to compare the requested size. Turning this off restores the previous resolution while keeping your manual values. Refresh rate and stream encoding size are separate settings. Advanced VRLink resolution overrides take priority.</source>
+      </trans-unit>
+      <trans-unit id="manual-render-resolution-20261014-4" datatype="html">
+        <source>Enter a whole number from 1 to 16384 pixels per eye. Requires a SteamVR restart.</source>
+      </trans-unit>
+      <trans-unit id="manual-render-resolution-invalid-20261019" datatype="html">
+        <source>Render resolution must use whole numbers from 1 to 16384 pixels per eye.</source>
+      </trans-unit>
+      <trans-unit id="manual-render-resolution-error-20261019" datatype="html">
+        <source>Invalid render resolution</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
